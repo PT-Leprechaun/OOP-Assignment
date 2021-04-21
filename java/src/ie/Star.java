@@ -12,22 +12,17 @@ public class Star extends Starfield
     float px;
     float py;
 
-    public Star(Starfield starfield, float x, float y, float z, float pz) {
+    public Star(Starfield starfield) {
+
         this.starfield = starfield;
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.pz = z;
-    }
 
-    public void star()
-    {
-        x = starfield.random/*(-starfield.width/2, starfield.width/2);*/(-starfield.height/2, starfield.height/2);
-        y = starfield.random/*(-starfield.height/2, starfield.height/2);*/(-starfield.width/2, starfield.width/2);
-        z = starfield.random(starfield.width/2);
+        x = starfield.random(-starfield.width, starfield.width);
+        y = starfield.random(-starfield.height, starfield.height);
+        z = starfield.random(starfield.width);
+
+        pz = z;
 
     }
-
     
     public void update()
     {
@@ -35,10 +30,13 @@ public class Star extends Starfield
         
         if(z < 1)
         {
-            z = starfield.width/2;
-            x = starfield.random(-starfield.width/2, starfield.width/2);
-            y = starfield.random(-starfield.height/2, starfield.height/2);
+            z = starfield.width;
+            x = starfield.random(-starfield.width, starfield.width);
+            y = starfield.random(-starfield.height, starfield.height);
+
+            pz = z;
         }
+
     }
     
     public void show()
@@ -49,19 +47,23 @@ public class Star extends Starfield
         float sx = PApplet.map(x / z, 0, 1, 0, starfield.width);
         float sy = PApplet.map(y / z, 0, 1, 0, starfield.height);
         
-        float r = PApplet.map(z, 0, starfield.width, 16, 0);
+        float r = PApplet.map(z, 0, starfield.width, 4, 0);
         
         starfield.ellipse(sx, sy, r, r);
 
         float px = PApplet.map(x / pz, 0, 1, 0, starfield.width);
-        float py = PApplet.map(y / pz, 0, 1, 11, starfield.height);
+        float py = PApplet.map(y / pz, 0, 1, 0, starfield.height);
 
         starfield.stroke(255);
+        starfield.strokeWeight(r);
         starfield.line(px, py, sx, sy);
-        //starfield.strokeWeight(r);
+
+        pz = z;
 
         px = x;
         py = y;
+
+        //pz = z;
     }
     public Starfield getStarfield() {
         return starfield;
@@ -94,4 +96,30 @@ public class Star extends Starfield
     public void setZ(float z) {
         this.z = z;
     }
+
+    public float getPz() {
+        return pz;
+    }
+
+    public void setPz(float pz) {
+        this.pz = pz;
+    }
+
+    public float getPy() {
+        return py;
+    }
+
+    public void setPy(float py) {
+        this.py = py;
+    }
+
+    public float getPx() {
+        return px;
+    }
+
+    public void setPx(float px) {
+        this.px = px;
+    }
+
+
 }

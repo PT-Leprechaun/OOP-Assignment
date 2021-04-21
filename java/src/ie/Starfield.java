@@ -3,17 +3,17 @@ import processing.core.PApplet;
 
 public class Starfield extends PApplet
 {
-    Star [] stars = new Star[800];
+    Star [] stars = new Star[5000];
 
     float speed;
 
     public void settings()
     {
-        size(800, 800);
+        size(800, 800, P3D);
         
         for(int i = 0; i < stars.length; i++)
         {
-            stars[i] = new Star(this, 10, 10, 10, 10);
+            stars[i] = new Star(this);
         }
     }
     
@@ -21,7 +21,7 @@ public class Starfield extends PApplet
     {
         noCursor();
         
-        speed = map(mouseX , 0, width, 0, 50);
+        speed = map(mouseX, 0, width, 0, 20);
         
         background(0);
         
