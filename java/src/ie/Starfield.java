@@ -1,7 +1,10 @@
 package ie;
-import processing.core.PApplet;
 
-public class Starfield extends PApplet
+import processing.core.PApplet;
+import ie.Visual;
+import ie.VisualException;
+
+public class Starfield extends Visual
 {
     Star [] stars = new Star[5000];
 
@@ -16,12 +19,36 @@ public class Starfield extends PApplet
             stars[i] = new Star(this);
         }
     }
+
+    public void setup()
+    {
+        startMinim();
+        loadAudio("after dawn.mp3");
+        getAudioPlayer().play();
+    }
     
     public void draw()
     {
+        calculateAverageAmplitude();
+        try
+        {
+            calculateFFT();
+        }
+        catch(VisualException e)
+        {
+            e.printStackTrace();
+        }
+        calculateFrequencyBands();
         noCursor();
+        //camera(mouseX*-1, mouseY*-1, 0, 0, 0, 0, 0, 1, 0);
+
+        float[] bands = getSmoothedBands();
         
-        speed = map(mouseX, 0, width, 0, 20);
+        for(int i = 0 ; i < bands.length ; i ++)
+        {
+            float h = bands[i];
+            speed = map(h/10, 0, width, 0, 12);
+        }
         
         background(0);
         
