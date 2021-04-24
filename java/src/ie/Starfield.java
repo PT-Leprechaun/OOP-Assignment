@@ -1,8 +1,8 @@
 package ie;
 
-import processing.core.PApplet;
-import ie.Visual;
-import ie.VisualException;
+//import processing.core.PApplet;
+//import ie.Visual;
+//import ie.VisualException;
 
 public class Starfield extends Visual
 {
@@ -12,7 +12,7 @@ public class Starfield extends Visual
 
     public void settings()
     {
-        size(800, 800, P3D);
+        size(900, 900, P3D);
         
         for(int i = 0; i < stars.length; i++)
         {
@@ -25,6 +25,28 @@ public class Starfield extends Visual
         startMinim();
         loadAudio("after dawn.mp3");
         getAudioPlayer().play();
+    }
+
+    public void keyPressed()
+    {
+        if(key == ' ')
+        {
+            if (getAudioPlayer().isPlaying())
+            {
+                getAudioPlayer().pause();
+            }
+            else
+            {
+                getAudioPlayer().play();
+            }
+        }
+        if(keyCode == ENTER)
+        {
+            getAudioPlayer().rewind();
+
+            getAudioPlayer().play();
+        }
+ 
     }
     
     public void draw()
@@ -47,7 +69,7 @@ public class Starfield extends Visual
         for(int i = 0 ; i < bands.length ; i ++)
         {
             float h = bands[i];
-            speed = map(h/10, 0, width, 0, 12);
+            speed = map(h/10, 0, width, 0, 10);
         }
         
         background(0);
