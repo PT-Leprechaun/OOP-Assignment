@@ -8,6 +8,8 @@ public class Starfield extends Visual
 {
     Star [] stars = new Star[5000];
 
+    int which = 0;
+
     float speed;
 
     public void settings()
@@ -29,6 +31,10 @@ public class Starfield extends Visual
 
     public void keyPressed()
     {
+        if (keyCode >= '0' && keyCode <= '6') 
+        {
+            which = keyCode - '0';
+        }
         if(key == ' ')
         {
             if (getAudioPlayer().isPlaying())
@@ -78,8 +84,23 @@ public class Starfield extends Visual
         
         for(int i = 0; i < stars.length; i++)
         {
-            stars[i].update();
-            stars[i].show();
+            switch(which)
+            {
+                case 0:
+                {
+                    stars[i].update();
+                    stars[i].show();
+                    break;
+                }
+                case 1:
+                {
+                    stars[i].update();
+                    stars[i].show2();
+                    break;
+                }
+
+            }
+
         }
     }
 }
