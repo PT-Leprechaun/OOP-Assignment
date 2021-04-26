@@ -43,9 +43,8 @@ public class Star extends Starfield
 
             pz = z;
         }
-
-
     }
+    
     
     public void show()
     {
@@ -59,7 +58,7 @@ public class Star extends Starfield
         
         float r = PApplet.map(z, 0, starfield.width, 4, 0);
         
-        //starfield.stroke(mouseX, random(255), mouseY);
+        //starfield.stroke(random(255), random(255), random(255));
         starfield.ellipse(sx, sy, r, r);
 
         float px = PApplet.map(x / pz, 0, 1, 0, starfield.width);
@@ -70,7 +69,6 @@ public class Star extends Starfield
         starfield.line(px, py, sx, sy);
 
         pz = z;
-
         px = x;
         py = y;
 
@@ -80,13 +78,13 @@ public class Star extends Starfield
         starfield.colorMode(RGB);
         starfield.fill(color);
         starfield.noStroke();
-        
+
         float sx = PApplet.map(x / z, 0, 1, 0, starfield.width);
         float sy = PApplet.map(y / z, 0, 1, 0, starfield.height);
         
         float r = PApplet.map(z, 0, starfield.width, 4, 0);
         
-        //starfield.stroke(mouseX, random(255), mouseY);
+        //starfield.stroke(random(255), random(255), random(255));
         starfield.ellipse(sx, sy, r, r);
 
         float px = PApplet.map(x / pz, 0, 1, 0, starfield.width);
@@ -96,10 +94,13 @@ public class Star extends Starfield
         starfield.strokeWeight(r);
         starfield.line(px, py, sx, sy);
 
-        //pz = z;
-
         px = x;
         py = y;
+    }
+
+    public void show3()
+    {
+
     }
     public Starfield getStarfield() {
         return starfield;

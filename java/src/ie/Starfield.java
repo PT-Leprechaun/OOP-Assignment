@@ -10,6 +10,10 @@ public class Starfield extends Visual
 
     int which = 0;
 
+    float z = width;
+
+    double ir = 0.1;
+
     float speed;
 
     public void settings()
@@ -67,8 +71,12 @@ public class Starfield extends Visual
             e.printStackTrace();
         }
         calculateFrequencyBands();
-        noCursor();
+        //noCursor();
         //camera(mouseX*-1, mouseY*-1, 0, 0, 0, 0, 0, 1, 0);
+
+        //translate(map(mouseX, 0, width, 0.5 + ir, 0.5 - ir) * width, map(mouseY, 0, height, 0.5 + ir, 0.5 - ir) * height);
+
+        translate(mouseX,mouseY);
 
         float[] bands = getSmoothedBands();
         
@@ -79,8 +87,8 @@ public class Starfield extends Visual
         }
         
         background(0);
-        
-        translate(width/2, height/2);
+        //translate(width / 2, height /2, z/10);
+        //camera(mouseX, mouseY, 900, 0, 0, 0, 0, 1, 0);
         
         for(int i = 0; i < stars.length; i++)
         {
