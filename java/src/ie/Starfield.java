@@ -6,13 +6,15 @@ package ie;
 
 public class Starfield extends Visual
 {
-    Star [] stars = new Star[5000];
+    Star [] stars = new Star[8000];
+
+    Planet p;
+
+    loop pool;
 
     int which = 0;
 
     float z = width;
-
-    double ir = 0.1;
 
     float speed;
 
@@ -24,10 +26,16 @@ public class Starfield extends Visual
         {
             stars[i] = new Star(this);
         }
+
+        p = new Planet(this);
+
+        pool = new loop(this);
+
     }
 
     public void setup()
     {
+        setFrameSize(256);
         startMinim();
         loadAudio("after dawn.mp3");
         getAudioPlayer().play();
@@ -71,12 +79,6 @@ public class Starfield extends Visual
             e.printStackTrace();
         }
         calculateFrequencyBands();
-        //noCursor();
-        //camera(mouseX*-1, mouseY*-1, 0, 0, 0, 0, 0, 1, 0);
-
-        //translate(map(mouseX, 0, width, 0.5 + ir, 0.5 - ir) * width, map(mouseY, 0, height, 0.5 + ir, 0.5 - ir) * height);
-
-        translate(mouseX,mouseY);
 
         float[] bands = getSmoothedBands();
         
@@ -87,28 +89,44 @@ public class Starfield extends Visual
         }
         
         background(0);
-        //translate(width / 2, height /2, z/10);
-        //camera(mouseX, mouseY, 900, 0, 0, 0, 0, 1, 0);
+        translate(mouseX,mouseY);
         
-        for(int i = 0; i < stars.length; i++)
+        switch(which)
         {
-            switch(which)
-            {
                 case 0:
+                {
+                    pool.pool();
+                    break;
+                }
+                case 1:
+                {
+
+                }
+                case 2:
+                {
+
+                }
+        }
+        /*switch(which)
+        {
+            case 0:
+            {
+                for(int i = 0; i < stars.length;i++)
                 {
                     stars[i].update();
                     stars[i].show();
                     break;
                 }
-                case 1:
+            }
+            case 1:
+            {
+                for(int i = 0; i < stars.length;i++)
                 {
                     stars[i].update();
                     stars[i].show2();
                     break;
                 }
-
             }
-
-        }
+        }*/
     }
 }

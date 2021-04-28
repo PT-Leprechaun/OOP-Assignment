@@ -11,6 +11,7 @@ public class Star extends Starfield
     public float y;
     public float z;
     public int color;
+    public float bands[];
     float pz;
     float px;
     float py;
@@ -49,6 +50,7 @@ public class Star extends Starfield
     public void show()
     {
         //float i;
+        starfield.pushMatrix();
         starfield.colorMode(RGB);
         starfield.fill(color);
         starfield.noStroke();
@@ -71,10 +73,12 @@ public class Star extends Starfield
         pz = z;
         px = x;
         py = y;
+        starfield.popMatrix();
 
     }
     public void show2()
     {
+        starfield.pushMatrix();
         starfield.colorMode(RGB);
         starfield.fill(color);
         starfield.noStroke();
@@ -96,11 +100,7 @@ public class Star extends Starfield
 
         px = x;
         py = y;
-    }
-
-    public void show3()
-    {
-
+        starfield.popMatrix();
     }
     public Starfield getStarfield() {
         return starfield;
