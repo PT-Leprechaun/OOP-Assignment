@@ -6,11 +6,9 @@ package ie;
 
 public class Starfield extends Visual
 {
-    Star [] stars = new Star[8000];
+    Star [] stars = new Star[4000];
 
     Planet p;
-
-    loop pool;
 
     int which = 0;
 
@@ -28,8 +26,6 @@ public class Starfield extends Visual
         }
 
         p = new Planet(this);
-
-        pool = new loop(this);
 
     }
 
@@ -95,38 +91,31 @@ public class Starfield extends Visual
         {
                 case 0:
                 {
-                    pool.pool();
+                    for(int i = 0; i < stars.length; i++)
+                    {
+                        stars[i].update();
+                        stars[i].show();
+                    }
                     break;
                 }
                 case 1:
                 {
-
+                    for(int i = 0; i < stars.length; i++)
+                    {
+                        stars[i].update();
+                        stars[i].show2();
+                    }
+                    break;
                 }
                 case 2:
                 {
-
+                    for(int i = 0; i < stars.length; i++)
+                    {
+                        stars[i].show();
+                    }
+                    p.render();
                 }
+                break;
         }
-        /*switch(which)
-        {
-            case 0:
-            {
-                for(int i = 0; i < stars.length;i++)
-                {
-                    stars[i].update();
-                    stars[i].show();
-                    break;
-                }
-            }
-            case 1:
-            {
-                for(int i = 0; i < stars.length;i++)
-                {
-                    stars[i].update();
-                    stars[i].show2();
-                    break;
-                }
-            }
-        }*/
     }
 }
