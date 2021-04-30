@@ -1,51 +1,18 @@
 package ie;
 
-public class Planet extends Visual {
+import processing.core.PApplet;
 
+public class Planet extends Starfield {
 
-    public Planet(Starfield starfield) 
-    {
-        
+    Starfield starfield;
+
+    public Planet(Starfield starfield) {
+
+        this.starfield = starfield;
+
     }
 
-    public void keyPressed()
-    {
-        if(key == ' ')
-        {
-            if (getAudioPlayer().isPlaying())
-            {
-                getAudioPlayer().pause();
-            }
-            else
-            {
-                getAudioPlayer().play();
-            }
-        }
-        if(keyCode == ENTER)
-        {
-            getAudioPlayer().rewind();
-
-            getAudioPlayer().play();
-        }
- 
-    }
-
-    public void setup()
-    {
-        colorMode(HSB);
-        //noCursor();
-        
-        setFrameSize(256);
-
-        startMinim();
-        loadAudio("after dawn.mp3");
-        getAudioPlayer().play();
-        //background(0);
-        //startListening(); 
-        
-    }
-
-    float radius = 200;
+    float radius = 130;
 
     float smoothedBoxSize = 0;
 
@@ -53,105 +20,80 @@ public class Planet extends Visual {
 
     float rotRight = 0;
 
-
     public void render()
     {
-        calculateAverageAmplitude();
+        starfield.calculateAverageAmplitude();
         try
         {
-            calculateFFT();
+            starfield.calculateFFT();
         }
         catch(VisualException e)
         {
             e.printStackTrace();
         }
-        calculateFrequencyBands();
-        background(0);
-        noFill();
-        stroke(255);
-        stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
-        camera(mouseX*-1, mouseY*-1, 600, 0, 0, 0, 0, 1, 0);
-        //camera(-250, -250, -mouseX, -mouseY, 0, 0, 0, 1, 0);
-        //translate(0, 0, -250);
+        starfield.calculateFrequencyBands();
 
-        rotLeft += getAmplitude() / 2.0f;
+        float[] bands = starfield.getSmoothedBands();
 
-        rotRight -= getAmplitude() / 7.0f;
+        rotLeft += starfield.getAmplitude() / 2.0f;
 
-        float[] bands = getSmoothedBands();
+        rotRight -= starfield.getAmplitude() / 6.0f;
 
-        rotateY(rotLeft);
+        starfield.rotateY(rotLeft);
         for(int i = 0 ; i < bands.length ; i ++)
         {
-            float theta = map(i, 0, bands.length, 0, TWO_PI);
 
-            //stroke(map(i, 0, bands.length, 0, 255), 255, 255);
-            stroke(0,0,255);
+            float theta = PApplet.map(i, 0,bands.length, 0, TWO_PI);
             float h = bands[i];
-            float x = sin(theta) * (radius * 1.3f);
-            float z = cos(theta) * (radius * 1.3f);
+            float x = PApplet.sin(theta) * (radius * 1.3f);
+            float z = PApplet.cos(theta) * (radius * 1.3f);
 
-            pushMatrix();
-            fill(255,255,255);
-            translate(x, 0, z);
-            rotateX(theta);
-            sphere(10);
-            popMatrix();
+            starfield.pushMatrix();
+            starfield.stroke(0,0,255);
+            starfield.translate(x, -5, z);
+            starfield.rotateX(theta);
+            starfield.sphere(7);
+            starfield.popMatrix();
 
-            pushMatrix();
-            //stroke(0, 0, 255);
-            colorMode(HSB);
-            stroke(map(i, 0, bands.length, 0, 255), 255, 255);
-            noFill();
-            sphere(h / 50);
-            popMatrix();
+            starfield.pushMatrix();
+            starfield.colorMode(HSB);
+            starfield.stroke(PApplet.map(i, 0, bands.length, 0, 255), 255, 255);
+            starfield.sphere(h / 55);
+            starfield.popMatrix();
         }
-        rotateX(rotRight);
+        starfield.rotateX(rotRight);
         for(int i = 0 ; i < bands.length ; i ++)
         {
+            float theta = PApplet.map(i, 0, bands.length, 0, TWO_PI);
 
-            float theta = map(i, 0, bands.length, 0, TWO_PI);
+            starfield.stroke(PApplet.map(i, 0, bands.length, 0, 255), 255, 255);
+            float x = PApplet.sin(theta) * (radius * 1.3f);
+            float z = PApplet.cos(theta) * (radius * 1.3f);
+            starfield.pushMatrix();
+            starfield.noFill();
 
-            stroke(map(i, 0, bands.length, 0, 255), 255, 255);
-            //stroke(0,0,255);
-            //float h = bands[i];
-            float x = sin(theta) * (radius * 1.3f);
-            float z = cos(theta) * (radius * 1.3f);
-            pushMatrix();
-            noFill();
+            starfield.translate(-x , x , -z);
 
-            translate(-x , x , -z);
-            
+            starfield.sphere(7);
 
-            sphere(10);
-
-            popMatrix();
+            starfield.popMatrix();
         }
         for(int i = 0 ; i < bands.length ; i ++)
         {
+            float theta = PApplet.map(i, 0, bands.length, 0, TWO_PI);
+
+            starfield.stroke(map(i, 0, bands.length, 0, 255), 255, 255);
+            float x = PApplet.sin(theta) * (radius * 1.3f);
+            float z = PApplet.cos(theta) * (radius * 1.3f);
+            starfield.pushMatrix();
             
-            
-            float theta = map(i, 0, bands.length, 0, TWO_PI);
+            starfield.noFill();
 
-            stroke(map(i, 0, bands.length, 0, 255), 255, 255);
-            //stroke(0,0,255);
-            float x = sin(theta) * (radius * 1.3f);
-            float z = cos(theta) * (radius * 1.3f);
-            pushMatrix();
-            
-            noFill();
+            starfield.translate(x , x , -z);
+            starfield.sphere(7);
 
-            translate(x , x , -z);
-            sphere(10);
-
-
-            popMatrix();
+            starfield.popMatrix();
             
         }
-        
-    
-
     }
-    float angle = 0;
-
 }
