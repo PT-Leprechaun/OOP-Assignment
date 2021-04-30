@@ -46,7 +46,6 @@ public class Star extends Starfield
         }
     }
     
-    
     public void show()
     {
         //float i;

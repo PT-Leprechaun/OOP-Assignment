@@ -19,7 +19,12 @@ public class Starfield extends Visual
     public void settings()
     {
         size(900, 900, P3D);
-        
+
+    }
+
+    public void setup()
+    {
+
         for(int i = 0; i < stars.length; i++)
         {
             stars[i] = new Star(this);
@@ -27,10 +32,7 @@ public class Starfield extends Visual
 
         p = new Planet(this);
 
-    }
-
-    public void setup()
-    {
+        colorMode(HSB);
         setFrameSize(256);
         startMinim();
         loadAudio("after dawn.mp3");
@@ -81,12 +83,11 @@ public class Starfield extends Visual
         for(int i = 0 ; i < bands.length ; i ++)
         {
             float h = bands[i];
-            speed = map(h/10, 0, width, 0, 10);
+            speed = map(h/5, 0, width, 0, 10);
         }
         
         background(0);
         translate(mouseX,mouseY);
-        
         switch(which)
         {
                 case 0:
@@ -117,5 +118,8 @@ public class Starfield extends Visual
                 }
                 break;
         }
+    }
+
+    public void translate(int mouseX, int mouseY, String p3d) {
     }
 }
