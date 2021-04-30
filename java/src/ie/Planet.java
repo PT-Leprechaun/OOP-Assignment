@@ -21,16 +21,17 @@ public class Planet extends Visual {
 
     public void setup()
     {
-        startMinim();
-        loadAudio("after dawn.mp3");
+        starfield.startMinim();
+        starfield.loadAudio("afterdawn.mp3");
+        starfield.colorMode(HSB);
     }
 
     public void render()
     {
-        calculateAverageAmplitude();
+        starfield.calculateAverageAmplitude();
         try
         {
-            calculateFFT();
+            starfield.calculateFFT();
         }
         catch(VisualException e)
         {
@@ -40,9 +41,8 @@ public class Planet extends Visual {
         starfield.background(0);
         starfield.noFill();
         starfield.stroke(255);
-        starfield.stroke(PApplet.map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
-        starfield.camera(mouseX*-1, mouseY*-1, 600, 0, 0, 0, 0, 1, 0);
-        //camera(-250, -250, -mouseX, -mouseY, 0, 0, 0, 1, 0);
+        starfield.stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+        starfield.camera(mouseX*-1, mouseY*-1, 1000, 0, 0, 0, 0, 1, 0);
         //translate(0, 0, -250);
 
         rotLeft += starfield.getAmplitude() / 2.0f;
@@ -71,7 +71,6 @@ public class Planet extends Visual {
 
             starfield.pushMatrix();
             //stroke(0, 0, 255);
-            starfield.colorMode(HSB);
             starfield.stroke(PApplet.map(i, 0, bands.length, 0, 255), 255, 255);
             starfield.noFill();
             starfield.sphere(h / 50);
@@ -83,7 +82,7 @@ public class Planet extends Visual {
 
             float theta = PApplet.map(i, 0, bands.length, 0, TWO_PI);
 
-            stroke(PApplet.map(i, 0, bands.length, 0, 255), 255, 255);
+            starfield.stroke(map(i, 0, bands.length, 0, 255), 255, 255);
             //stroke(0,0,255);
             //float h = bands[i];
             float x = sin(theta) * (radius * 1.3f);
@@ -104,7 +103,7 @@ public class Planet extends Visual {
             
             float theta = PApplet.map(i, 0, bands.length, 0, TWO_PI);
 
-            starfield.stroke(PApplet.map(i, 0, bands.length, 0, 255), 255, 255);
+            starfield.stroke(map(i, 0, bands.length, 0, 255), 255, 255);
             //stroke(0,0,255);
             float x = sin(theta) * (radius * 1.3f);
             float z = cos(theta) * (radius * 1.3f);
