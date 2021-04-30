@@ -23,7 +23,6 @@ public class Planet extends Visual {
     {
         starfield.startMinim();
         starfield.loadAudio("afterdawn.mp3");
-        starfield.colorMode(HSB);
     }
 
     public void render()
@@ -38,16 +37,14 @@ public class Planet extends Visual {
             e.printStackTrace();
         }
         starfield.calculateFrequencyBands();
-        starfield.background(0);
-        starfield.noFill();
-        starfield.stroke(255);
-        starfield.stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
-        starfield.camera(mouseX*-1, mouseY*-1, 1000, 0, 0, 0, 0, 1, 0);
+        //starfield.noFill();
+        //starfield.stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+        // starfield.camera(mouseX*-1, mouseY*-1, 600, 0, 0, 0, 0, 1, 0);
         //translate(0, 0, -250);
 
         rotLeft += starfield.getAmplitude() / 2.0f;
 
-        rotRight -= starfield.getAmplitude() / 7.0f;
+        rotRight -= starfield.getAmplitude() / 6.0f;
 
         float[] bands = starfield.getSmoothedBands();
 
@@ -57,23 +54,25 @@ public class Planet extends Visual {
             float theta = PApplet.map(i, 0, bands.length, 0, TWO_PI);
 
             //stroke(map(i, 0, bands.length, 0, 255), 255, 255);
+            starfield.colorMode(HSB);
             starfield.stroke(0,0,255);
             float h = bands[i];
-            float x = sin(theta) * (radius * 1.3f);
-            float z = cos(theta) * (radius * 1.3f);
+            float x = sin(theta) * (radius * 1.1f);
+            float z = cos(theta) * (radius * 1.1f);
 
             starfield.pushMatrix();
-            starfield.fill(255,255,255);
-            starfield.translate(x, 0, z);
+            //starfield.fill(255,255,255);
+            starfield.translate(x, -5, z);
             starfield.rotateX(theta);
-            starfield.sphere(10);
+            starfield.sphere(7);
             starfield.popMatrix();
 
             starfield.pushMatrix();
             //stroke(0, 0, 255);
+            starfield.colorMode(HSB);
             starfield.stroke(PApplet.map(i, 0, bands.length, 0, 255), 255, 255);
-            starfield.noFill();
-            starfield.sphere(h / 50);
+            //starfield.noFill();
+            starfield.sphere(h / 55);
             starfield.popMatrix();
         }
         starfield.rotateX(rotRight);
@@ -85,15 +84,15 @@ public class Planet extends Visual {
             starfield.stroke(map(i, 0, bands.length, 0, 255), 255, 255);
             //stroke(0,0,255);
             //float h = bands[i];
-            float x = sin(theta) * (radius * 1.3f);
-            float z = cos(theta) * (radius * 1.3f);
+            float x = sin(theta) * (radius * 1.1f);
+            float z = cos(theta) * (radius * 1.1f);
             starfield.pushMatrix();
-            starfield.noFill();
+            //starfield.noFill();
 
             starfield.translate(-x , x , -z);
             
 
-            starfield.sphere(10);
+            starfield.sphere(7);
 
             starfield.popMatrix();
         }
@@ -105,14 +104,14 @@ public class Planet extends Visual {
 
             starfield.stroke(map(i, 0, bands.length, 0, 255), 255, 255);
             //stroke(0,0,255);
-            float x = sin(theta) * (radius * 1.3f);
-            float z = cos(theta) * (radius * 1.3f);
+            float x = sin(theta) * (radius * 1.1f);
+            float z = cos(theta) * (radius * 1.1f);
             starfield.pushMatrix();
             
-            starfield.noFill();
+            //starfield.noFill();
 
             starfield.translate(x , x , -z);
-            starfield.sphere(10);
+            starfield.sphere(7);
 
 
             starfield.popMatrix();

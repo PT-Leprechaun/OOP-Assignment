@@ -85,37 +85,51 @@ public class Starfield extends Visual
         }
         
         background(0);
-        translate(mouseX,mouseY);
+
+        // translate(width/10, height/10);
+
+        // translate(mouseX,mouseY);
         
         switch(which)
         {
-                case 0:
+            case 0:
+            {
+                camera();
+                translate(mouseX,mouseY);
+                for(int i = 0; i < stars.length; i++)
                 {
-                    for(int i = 0; i < stars.length; i++)
-                    {
-                        stars[i].update();
-                        stars[i].show();
-                    }
-                    break;
-                }
-                case 1:
-                {
-                    for(int i = 0; i < stars.length; i++)
-                    {
-                        stars[i].update();
-                        stars[i].show2();
-                    }
-                    break;
-                }
-                case 2:
-                {
-                    for(int i = 0; i < stars.length; i++)
-                    {
-                        stars[i].show();
-                    }
-                    p.render();
+                    stars[i].update();
+                    stars[i].show();
                 }
                 break;
+                }
+            case 1:
+            {
+                camera();
+                translate(mouseX,mouseY);
+                for(int i = 0; i < stars.length; i++)
+                {
+                    stars[i].update();
+                    stars[i].show2();
+                }
+                break;
+            }
+            case 2:
+            {
+                translate(width/2 , height/2);
+                for(int i = 0; i < stars.length; i++)
+                {
+                    stars[i].show();
+                }
+                pushMatrix();
+                p.render();
+                popMatrix();
+                camera(0, 0, 500, mouseX, mouseY, 0, 0, 1, 0);
+                // pushMatrix();
+                // translate(width/2, height/2);
+                // popMatrix();
+                break;
+            }   
         }
     }
 }
