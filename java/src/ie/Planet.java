@@ -51,14 +51,15 @@ public class Planet extends Visual {
         starfield.rotateY(rotLeft);
         for(int i = 0 ; i < bands.length ; i ++)
         {
+            starfield.noFill();
             float theta = PApplet.map(i, 0, bands.length, 0, TWO_PI);
 
             //stroke(map(i, 0, bands.length, 0, 255), 255, 255);
             starfield.colorMode(HSB);
             starfield.stroke(0,0,255);
             float h = bands[i];
-            float x = sin(theta) * (radius * 1.1f);
-            float z = cos(theta) * (radius * 1.1f);
+            float x = sin(theta) * (radius * 0.8f);
+            float z = cos(theta) * (radius * 0.8f);
 
             starfield.pushMatrix();
             //starfield.fill(255,255,255);
@@ -71,8 +72,7 @@ public class Planet extends Visual {
             //stroke(0, 0, 255);
             starfield.colorMode(HSB);
             starfield.stroke(PApplet.map(i, 0, bands.length, 0, 255), 255, 255);
-            //starfield.noFill();
-            starfield.sphere(h / 55);
+            starfield.sphere(h / 60);
             starfield.popMatrix();
         }
         starfield.rotateX(rotRight);
@@ -80,32 +80,30 @@ public class Planet extends Visual {
         {
 
             float theta = PApplet.map(i, 0, bands.length, 0, TWO_PI);
+            starfield.noFill();
 
             starfield.stroke(map(i, 0, bands.length, 0, 255), 255, 255);
             //stroke(0,0,255);
             //float h = bands[i];
-            float x = sin(theta) * (radius * 1.1f);
-            float z = cos(theta) * (radius * 1.1f);
+            float x = sin(theta) * (radius * 0.8f);
+            float z = cos(theta) * (radius * 0.8f);
+            
             starfield.pushMatrix();
-            //starfield.noFill();
 
             starfield.translate(-x , x , -z);
-            
-
             starfield.sphere(7);
 
             starfield.popMatrix();
         }
         for(int i = 0 ; i < bands.length ; i ++)
         {
-            
-            
+            starfield.noFill();
             float theta = PApplet.map(i, 0, bands.length, 0, TWO_PI);
 
             starfield.stroke(map(i, 0, bands.length, 0, 255), 255, 255);
             //stroke(0,0,255);
-            float x = sin(theta) * (radius * 1.1f);
-            float z = cos(theta) * (radius * 1.1f);
+            float x = sin(theta) * (radius * 0.8f);
+            float z = cos(theta) * (radius * 0.8f);
             starfield.pushMatrix();
             
             //starfield.noFill();

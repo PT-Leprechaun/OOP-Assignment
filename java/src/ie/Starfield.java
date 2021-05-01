@@ -6,7 +6,7 @@ package ie;
 
 public class Starfield extends Visual
 {
-    Star [] stars = new Star[4000];
+    Star [] stars = new Star[5000];
 
     Planet p;
 
@@ -86,8 +86,6 @@ public class Starfield extends Visual
         
         background(0);
 
-        // translate(width/10, height/10);
-
         // translate(mouseX,mouseY);
         
         switch(which)
@@ -119,12 +117,13 @@ public class Starfield extends Visual
                 translate(width/2 , height/2);
                 for(int i = 0; i < stars.length; i++)
                 {
+                    stars[i].update();
                     stars[i].show();
                 }
                 pushMatrix();
                 p.render();
                 popMatrix();
-                camera(width/2, height/2, 550, mouseX, mouseY, 0, 0, 30, 0);
+                camera(width/2, height/2, 700, mouseX, mouseY, 0, 0, 1, 0);
                 // camera(10, 10, 700, mouseX, mouseY, 0, 0, 30, 0);
                 // pushMatrix();
                 // translate(width/2, height/2);
