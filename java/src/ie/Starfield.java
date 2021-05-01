@@ -124,7 +124,8 @@ public class Starfield extends Visual
                 pushMatrix();
                 p.render();
                 popMatrix();
-                camera(0, 0, 500, mouseX, mouseY, 0, 0, 1, 0);
+                camera(width/2, height/2, 550, mouseX, mouseY, 0, 0, 30, 0);
+                // camera(10, 10, 700, mouseX, mouseY, 0, 0, 30, 0);
                 // pushMatrix();
                 // translate(width/2, height/2);
                 // popMatrix();
