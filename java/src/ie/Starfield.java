@@ -65,7 +65,7 @@ public class Starfield extends Visual
             getAudioPlayer().pause();
             setFrameSize(256);
             startMinim();
-            loadAudio("waterfront.mp3");
+            loadAudio("1923.mp3");
             getAudioPlayer().play();
         }
         if(keyCode == 'W')
@@ -79,9 +79,8 @@ public class Starfield extends Visual
         if(keyCode == 'E')
         {
             getAudioPlayer().pause();
-            setFrameSize(256);
             startMinim();
-            loadAudio("spirit.mp3");
+            loadAudio("waterfront.mp3");
             getAudioPlayer().play();
         }
         if(keyCode == 'R')

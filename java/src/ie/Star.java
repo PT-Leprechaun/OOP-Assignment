@@ -3,6 +3,7 @@ package ie;
 import processing.core.PApplet;
 //import ie.Visual;
 //import ie.VisualException;
+import processing.core.PVector;
 
 public class Star extends Starfield
 {
@@ -15,6 +16,7 @@ public class Star extends Starfield
     float pz;
     float px;
     float py;
+    PVector location;
 
     public Star(Starfield starfield) {
 
@@ -22,10 +24,10 @@ public class Star extends Starfield
 
         color = starfield.color(starfield.random(1, 255), starfield.random(1, 255), starfield.random(1, 255));
 
-        x = starfield.random(-starfield.width, starfield.width);
-        y = starfield.random(-starfield.height, starfield.height);
+        location = new PVector(starfield.random(-starfield.width, starfield.width),starfield.random(-starfield.height, starfield.height));
+
         z = starfield.random(starfield.width);
-        
+
         pz = z;
 
     }
@@ -36,11 +38,11 @@ public class Star extends Starfield
         
         if(z < 1)
         {
-            z = starfield.width;
-            x = starfield.random(-starfield.width, starfield.width);
-            y = starfield.random(-starfield.height, starfield.height);
+            location = new PVector(starfield.random(-starfield.width, starfield.width),starfield.random(-starfield.height, starfield.height));
 
             color = starfield.color(starfield.random(1, 255), starfield.random(1, 255), starfield.random(1, 255));
+
+            z = starfield.width;
 
             pz = z;
         }
@@ -55,16 +57,16 @@ public class Star extends Starfield
         starfield.fill(color);
         starfield.noStroke();
         
-        float sx = PApplet.map(x / z, 0, 1, 0, starfield.width);
-        float sy = PApplet.map(y / z, 0, 1, 0, starfield.height);
+        float sx = PApplet.map(location.x / z, 0, 1, 0, starfield.width);
+        float sy = PApplet.map(location.y / z, 0, 1, 0, starfield.height);
         
         float r = PApplet.map(z, 0, starfield.width, 4, 0);
         
         //starfield.stroke(random(255), random(255), random(255));
         starfield.ellipse(sx, sy, r, r);
 
-        float px = PApplet.map(x / pz, 0, 1, 0, starfield.width);
-        float py = PApplet.map(y / pz, 0, 1, 0, starfield.height);
+        float px = PApplet.map(location.x / pz, 0, 1, 0, starfield.width);
+        float py = PApplet.map(location.y / pz, 0, 1, 0, starfield.height);
 
         starfield.stroke(color);
         starfield.strokeWeight(r);
@@ -83,16 +85,16 @@ public class Star extends Starfield
         starfield.fill(color);
         starfield.noStroke();
 
-        float sx = PApplet.map(x / z, 0, 1, 0, starfield.width);
-        float sy = PApplet.map(y / z, 0, 1, 0, starfield.height);
+        float sx = PApplet.map(location.x / z, 0, 1, 0, starfield.width);
+        float sy = PApplet.map(location.y / z, 0, 1, 0, starfield.height);
         
         float r = PApplet.map(z, 0, starfield.width, 4, 0);
         
         //starfield.stroke(random(255), random(255), random(255));
         starfield.ellipse(sx, sy, r, r);
 
-        float px = PApplet.map(x / pz, 0, 1, 0, starfield.width);
-        float py = PApplet.map(y / pz, 0, 1, 0, starfield.height);
+        float px = PApplet.map(location.x / pz, 0, 1, 0, starfield.width);
+        float py = PApplet.map(location.y / pz, 0, 1, 0, starfield.height);
 
         starfield.stroke(color);
         starfield.strokeWeight(r);

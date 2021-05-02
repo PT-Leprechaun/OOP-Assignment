@@ -48,22 +48,24 @@ public class Planet extends Visual {
 
         float[] bands = starfield.getSmoothedBands();
 
+        starfield.noFill();
+
         starfield.rotateY(rotLeft);
         for(int i = 0 ; i < bands.length ; i ++)
         {
-            starfield.noFill();
+            // starfield.noFill();
             float theta = PApplet.map(i, 0, bands.length, 0, TWO_PI);
 
             //stroke(map(i, 0, bands.length, 0, 255), 255, 255);
             starfield.colorMode(HSB);
-            starfield.stroke(0,0,255);
+            // starfield.stroke(0,0,255);
             float h = bands[i];
             float x = sin(theta) * (radius * 0.8f);
             float z = cos(theta) * (radius * 0.8f);
 
             starfield.pushMatrix();
-            //starfield.fill(255,255,255);
-            starfield.noFill();
+            starfield.stroke(0,0,255);
+            // starfield.noFill();
             starfield.translate(x, -5, z);
             starfield.rotateX(theta);
             starfield.sphere(7);
@@ -71,7 +73,7 @@ public class Planet extends Visual {
 
             starfield.pushMatrix();
             //stroke(0, 0, 255);
-            starfield.noFill();
+            // starfield.noFill();
             starfield.stroke(PApplet.map(i, 0, bands.length, 0, 255), 255, 255);
             starfield.sphere(h / 90);
             starfield.popMatrix();
@@ -79,7 +81,7 @@ public class Planet extends Visual {
         starfield.rotateX(rotRight);
         for(int i = 0 ; i < bands.length ; i ++)
         {
-            starfield.noFill();
+            // starfield.noFill();
             float theta = PApplet.map(i, 0, bands.length, 0, TWO_PI);
 
             starfield.stroke(map(i, 0, bands.length, 0, 255), 255, 255);
@@ -97,7 +99,7 @@ public class Planet extends Visual {
         }
         for(int i = 0 ; i < bands.length ; i ++)
         {
-            starfield.noFill();
+            // starfield.noFill();
             float theta = PApplet.map(i, 0, bands.length, 0, TWO_PI);
 
             starfield.stroke(map(i, 0, bands.length, 0, 255), 255, 255);
@@ -115,6 +117,7 @@ public class Planet extends Visual {
             starfield.popMatrix();
             
         }
+        // starfield.noFill();
 
     }
     float angle = 0;
