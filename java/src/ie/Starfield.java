@@ -33,7 +33,7 @@ public class Starfield extends Visual
     {
         setFrameSize(256);
         startMinim();
-        loadAudio("afterdawn.mp3");
+        loadAudio("inception.mp3");
         getAudioPlayer().play();
     }
 
@@ -58,6 +58,38 @@ public class Starfield extends Visual
         {
             getAudioPlayer().rewind();
 
+            getAudioPlayer().play();
+        }
+        if(keyCode == 'Q')
+        {
+            getAudioPlayer().pause();
+            setFrameSize(256);
+            startMinim();
+            loadAudio("waterfront.mp3");
+            getAudioPlayer().play();
+        }
+        if(keyCode == 'W')
+        {
+            getAudioPlayer().pause();
+            setFrameSize(256);
+            startMinim();
+            loadAudio("afterdawn.mp3");
+            getAudioPlayer().play();
+        }
+        if(keyCode == 'E')
+        {
+            getAudioPlayer().pause();
+            setFrameSize(256);
+            startMinim();
+            loadAudio("spirit.mp3");
+            getAudioPlayer().play();
+        }
+        if(keyCode == 'R')
+        {
+            getAudioPlayer().pause();
+            setFrameSize(256);
+            startMinim();
+            loadAudio("inception.mp3");
             getAudioPlayer().play();
         }
  

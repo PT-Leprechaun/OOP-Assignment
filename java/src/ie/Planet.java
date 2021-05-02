@@ -42,7 +42,7 @@ public class Planet extends Visual {
         // starfield.camera(mouseX*-1, mouseY*-1, 600, 0, 0, 0, 0, 1, 0);
         //translate(0, 0, -250);
 
-        rotLeft += starfield.getAmplitude() / 2.0f;
+        rotLeft += starfield.getAmplitude() / 6.0f;
 
         rotRight -= starfield.getAmplitude() / 6.0f;
 
@@ -63,6 +63,7 @@ public class Planet extends Visual {
 
             starfield.pushMatrix();
             //starfield.fill(255,255,255);
+            starfield.noFill();
             starfield.translate(x, -5, z);
             starfield.rotateX(theta);
             starfield.sphere(7);
@@ -70,17 +71,16 @@ public class Planet extends Visual {
 
             starfield.pushMatrix();
             //stroke(0, 0, 255);
-            starfield.colorMode(HSB);
+            starfield.noFill();
             starfield.stroke(PApplet.map(i, 0, bands.length, 0, 255), 255, 255);
-            starfield.sphere(h / 60);
+            starfield.sphere(h / 90);
             starfield.popMatrix();
         }
         starfield.rotateX(rotRight);
         for(int i = 0 ; i < bands.length ; i ++)
         {
-
-            float theta = PApplet.map(i, 0, bands.length, 0, TWO_PI);
             starfield.noFill();
+            float theta = PApplet.map(i, 0, bands.length, 0, TWO_PI);
 
             starfield.stroke(map(i, 0, bands.length, 0, 255), 255, 255);
             //stroke(0,0,255);
