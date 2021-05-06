@@ -43,7 +43,11 @@ It is also in charge of their rotation.
 
 The thing I'm most proud of is the hyperspace mode which i discovered by accident when I took pz = z out of the last for loop in star.java, which resets the position of pz to its original state. I decided to keep since it reminded me of how hyperspace used be displayed in "old movies"( for me at least, I remember specifically star wars ).
 
-- ![An image](images/hyper_example.jpg)
+![An image](images/hyper_example.jpg)
+
+# Youtube video link
+
+
 
 # Markdown Tutorial
 
