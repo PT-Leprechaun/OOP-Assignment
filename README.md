@@ -4,14 +4,6 @@ Name: Diogo Cardoso Lessa Carmo Reis
 
 Student Number: C19768619
 
-## Instructions
-
-- Fork this repository and use it a starter project for your assignment
-- Create a new package named your student number and put all your code in this package.
-- You should start by creating a subclass of ie.tudublin.Visual
-- There is an example visualiser called MyVisual in the example package
-- Check out the WaveForm and AudioBandsVisual for examples of how to call the Processing functions from other classes that are not subclasses of PApplet
-
 # Description of the assignment
 
 A starfield that moves according to the frequency of the song playing. It has 3 different "modes" the first one, which is the main one, a basic rainbow-colored field of stars that moves faster according to the song. The second one is a sort of hyperspace mode and the third and final one is a mix between the first one and a planetoid that has 3 different orbits of spheres around it, this planetoid grows bigger with the frequency of the song and the orbits increase their speed of rotation around the planetoid as well. All of these modes have an interactive perspective that the user can change based on the position of the mouse and the user can also choose from a selection of 4 songs chosen beforehand by me.
@@ -34,14 +26,22 @@ As stated above moving the mouse will change the perspective of the user.
 
 # How it works
 
-Starfield.java is the class that runs everything in the background, it's responsible for the keyboard inputs, the settings so on and so forth. Inside of starfield.java star.java and planet.java are called in a switch case. star[i].show is used to create the stars whilst star[i].update is used to update the position of the stars, so that the user has the feeling that the stars get bigger the closer they are to the user.
+Starfield.java is the class that runs everything in the background, it's responsible for the keyboard inputs, the settings, the music so on and so forth. Inside of starfield.java, star.java and planet.java are called in a switch case. star[i].show is used to create the stars whilst star[i].update is used to update the position of the stars, so that the user has the feeling that the stars get bigger the closer they are to the user.
 The planet class is used to create the planetoid and its different orbit of spheres. 
 It is also in charge of their rotation.
 
+- starfield
+![An image](images/star.png)
+
+- hyperspace
+![An image](images/hyper.png)
+
+- planetoid
+![An image](images/planet.png)
 
 # What I am most proud of in the assignment
 
-I'll be very honest the thing that makes me the most proud was when i discovered hyperspace mode by mistake when i accidentaly took the pz = z, which resets the position of pz to its original state, since it very much looks like the hyperspace from old movies.
+I'll bed was when i discovered hy very honest the thing that makes me the most prouperspace mode by mistake when I accidentaly took the pz = z, which resets the position of pz to its original state.I decided to keep since it reminded me of how hyperspace would be implemented in "old movies"( for me at least).
 
 # Markdown Tutorial
 
