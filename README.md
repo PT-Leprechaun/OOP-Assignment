@@ -31,13 +31,13 @@ The planet class is used to create the planetoid and its different orbit of sphe
 It is also in charge of their rotation.
 
 - starfield
-![An image](images/star.png)
+![An image](data/star.png)
 
 - hyperspace
-![An image](images/hyper.png)
+![An image](data/hyper.png)
 
 - planetoid
-![An image](images/planet.png)
+![An image](data/planet.png)
 
 # What I am most proud of in the assignment
 
