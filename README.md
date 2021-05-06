@@ -41,7 +41,9 @@ It is also in charge of their rotation.
 
 # What I am most proud of in the assignment
 
-I'll bed was when i discovered hy very honest the thing that makes me the most prouperspace mode by mistake when I accidentaly took the pz = z, which resets the position of pz to its original state.I decided to keep since it reminded me of how hyperspace would be implemented in "old movies"( for me at least).
+The thing I'm most proud of is the hyperspace mode which i discovered by accident when I took pz = z out of the last for loop in star.java, which resets the position of pz to its original state. I decided to keep since it reminded me of how hyperspace used be displayed in "old movies"( for me at least, I remember specifically star wars ).
+
+- ![An image](images/hyper_example.jpg)
 
 # Markdown Tutorial
 
