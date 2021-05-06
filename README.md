@@ -20,15 +20,15 @@ A starfield that moves according to the frequency of the song playing. It has 3 
 
 The user can switch between the different modes by pressing the following buttons:
 
-0 = main mode (basic rainbow starfield)
-1 = hyperspace
-2 = planetoid
-q = Party like it's 1923 by Teminite
-w = After Dawn by Jaeger and Meric
-e = Waterfront by Detrace( which is by far my favorite)
-r = return to the first song (aka Inception by Teminite)
-space bar = pausing the song
-enter = restarting the song
+-0 = main mode (basic rainbow starfield)
+-1 = hyperspace
+-2 = planetoid
+-q = Party like it's 1923 by Teminite
+-w = After Dawn by Jaeger and Meric
+-e = Waterfront by Detrace( which is by far my favorite)
+-r = return to the first song (aka Inception by Teminite)
+-space bar = pausing the song
+-enter = restarting the song
 
 As stated above moving the mouse will change the perspective of the user.
 
