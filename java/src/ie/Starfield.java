@@ -33,6 +33,7 @@ public class Starfield extends Visual
     {
         setFrameSize(256);
         startMinim();
+        noCursor();
         loadAudio("inception.mp3");
         getAudioPlayer().play();
     }
