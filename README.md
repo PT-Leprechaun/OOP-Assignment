@@ -82,8 +82,7 @@ Starfield.java is the class that runs everything in the background, it's respons
             getAudioPlayer().play();
         }
 ```
-    }
-the settings, the music so on and so forth.
+the settings
 ```    public void setup()
     {
         setFrameSize(256);
@@ -137,6 +136,8 @@ Inside of starfield.java, star.java and planet.java are called in a switch case.
 star[i].show is used to create the stars whilst star[i].update is used to update the position of the stars, so that the user has the feeling that the stars get bigger the closer they are to the user.
 The planet class is used to create the planetoid and its different orbit of spheres. 
 It is also in charge of their rotation.
+
+Bellow will be images of the different modes of the program
 
 - starfield
 ![Starfield](images/star.png)
