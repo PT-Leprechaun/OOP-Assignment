@@ -42,9 +42,9 @@ public class Planet extends Visual {
         // starfield.camera(mouseX*-1, mouseY*-1, 600, 0, 0, 0, 0, 1, 0);
         //translate(0, 0, -250);
 
-        rotLeft += starfield.getAmplitude() / 6.0f;
+        rotLeft += starfield.getAmplitude() / 4.0f;
 
-        rotRight -= starfield.getAmplitude() / 6.0f;
+        rotRight -= starfield.getAmplitude() / 4.0f;
 
         float[] bands = starfield.getSmoothedBands();
 
@@ -75,7 +75,7 @@ public class Planet extends Visual {
             //stroke(0, 0, 255);
             // starfield.noFill();
             starfield.stroke(PApplet.map(i, 0, bands.length, 0, 255), 255, 255);
-            starfield.sphere(h / 90);
+            starfield.sphere(h / 190);
             starfield.popMatrix();
         }
         starfield.rotateX(rotRight);

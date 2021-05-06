@@ -18,7 +18,7 @@ public class Starfield extends Visual
 
     public void settings()
     {
-        size(900, 900, P3D);
+        size(1400, 900, P3D);
         
         for(int i = 0; i < stars.length; i++)
         {
@@ -155,10 +155,6 @@ public class Starfield extends Visual
                 p.render();
                 popMatrix();
                 camera(width/2, height/2, 700, mouseX, mouseY, 0, 0, 1, 0);
-                // camera(10, 10, 700, mouseX, mouseY, 0, 0, 30, 0);
-                // pushMatrix();
-                // translate(width/2, height/2);
-                // popMatrix();
                 break;
             }   
         }
